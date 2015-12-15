@@ -1,0 +1,111 @@
+/**
+ * FAQ - CSS
+ *
+ * @author Oliver Klee
+ * @version 0.1
+ */
+
+// Imports
+@import "compass/utilities/general/clearfix";
+@import "../bower_components/normalize-css/normalize";
+
+/** Allgemein */
+body {
+    font: 14px Helvetica;
+}
+
+.wrapper {
+    width: 750px;
+    margin: 0 auto;
+}
+
+/** Header */
+header {
+    background: url("../images/body_bg.png") 0 0 transparent repeat-x;
+}
+
+/** Content */
+.main { 
+    @include clearfix;
+    margin: 30px 0;
+    
+    // FAQ Navigation
+    nav {
+        float: left;
+        width: 180px;
+        border-top: 1px solid #99ccff;
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        a {
+            background: url("../images/bullet.png") 0 4px transparent no-repeat;
+            border-bottom: 1px solid #99ccff;
+            color: #99ccff;
+            display: block;
+            position: relative;
+            padding: 2px 20px;
+            text-decoration: none;
+        }
+    }
+    
+    // FAQ Content
+    section {
+        margin-bottom: 30px;
+        float: right;
+        width: 530px;
+
+        .faq-section {
+            // display: none;
+
+            // &:first-child {
+            //     display: block;
+            // }
+        }
+
+        .faq-section-header {
+            background-color: #0066cc;
+            border-top-right-radius: 10px;
+            color: #fff;
+            font-size: 14px;
+            font-weight: normal;
+            margin: 0;
+            padding: 8px 15px;
+        }
+        
+        .faq-item {
+            border-top-right-radius: 10px;
+            margin-top: 3px;
+            padding: 5px 30px;
+
+            &.open {
+                background: url("../images/btn_minus.png") 6px 6px #c7e0fc no-repeat;
+            }
+            &.closed {
+                background: url("../images/btn_plus.png") 6px 6px #deedfd no-repeat;
+
+                h3 {
+                    color: #0066cc;
+                    font-weight: normal;
+                }
+            }
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        h3 {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        .answer {
+            padding: 5px 0 0;
+            margin: 0;
+            display: none;
+        }
+    }
+}
