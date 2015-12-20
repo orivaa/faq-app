@@ -8,8 +8,8 @@
 // create namespace
 var FidelityApp = FidelityApp || {}; // jshint ignore:line
 
-/** 
- * @namespace Namespace for the fidelityFaq Module of FidelityApp 
+/**
+ * @namespace Namespace for the fidelityFaq Module of FidelityApp
  */
 FidelityApp.fidelityFaq = (function()
 {
@@ -24,8 +24,7 @@ FidelityApp.fidelityFaq = (function()
     var getData = function(data)
     {
         if ( $.isArray(data) ) {
-            var appData = data;
-            return appData;
+            return data;
         } else {
             return 'Invalid Data';
         }
@@ -47,20 +46,27 @@ FidelityApp.fidelityFaq = (function()
         for (var i = 0; i < arrayLength; i++) {
             myListHTML += '<div class="faq-section">' +
                         '<h2 class="faq-section-header">' + faqList[i].menu + '</h2>';
-                        
-            for (var j = 0; j < faqList[i].fragen.length; j++) {
-                myInnerListHTML +='<article class="faq-item">' +
-                                 '<h3 class="question">' +
-                                 faqList[i].fragen[j].frage +
-                                 '</h3>' +
-                                 '<div class="answer">' +
-                                 faqList[i].fragen[j].antwort +
-                                 '</div>' +
-                                 '</article>';
-            }
+
+            renderFaqItem(faqList[i]);
 
             myListHTML += myInnerListHTML + '</div>';
         }
+
+        function renderFaqItem (faqSection) {
+
+            for (var i = 0; i < faqSection.fragen.length; i++) {
+                myInnerListHTML +='<article class="faq-item">' +
+                    '<h3 class="question">' +
+                    faqSection.fragen[i].frage +
+                    '</h3>' +
+                    '<div class="answer">' +
+                    faqSection.fragen[i].antwort +
+                    '</div>' +
+                    '</article>';
+            }
+
+        }
+
 
         $faqPage.append(myListHTML);
     };
@@ -73,12 +79,11 @@ FidelityApp.fidelityFaq = (function()
     var renderMenu = function(data)
     {
         var faqList = getData(data);
-        var arrayLength = faqList.length - 1;
         var myListHTML = document.getElementById('faq-nav').innerHTML;
 
-        for (var i = 0; i < arrayLength; i++) {
-            myListHTML += '<li><a href="" title="">' + faqList[i].menu + '</a></li>';
-        }
+        faqList.forEach(function(element, index, array) {
+            myListHTML += '<li><a href="" title="">' + array[index].menu + '</a></li>';
+        });
 
         $('#faq-nav').append(myListHTML);
     };
